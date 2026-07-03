@@ -1,15 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <!-- perforated stamp on cream -->
+  <!-- perforated stamp frame, cream ground -->
   <rect width="64" height="64" fill="#f3eee4"/>
-  <g fill="#382b24">
-    <path d="M8 8h48v48H8Z"/>
-  </g>
+  <path d="M8 8h48v48H8Z" fill="#382b24"/>
   <g fill="#f3eee4">
     <circle cx="8" cy="8" r="5"/><circle cx="24" cy="8" r="5"/><circle cx="40" cy="8" r="5"/><circle cx="56" cy="8" r="5"/>
     <circle cx="8" cy="24" r="5"/><circle cx="8" cy="40" r="5"/><circle cx="8" cy="56" r="5"/>
     <circle cx="56" cy="24" r="5"/><circle cx="56" cy="40" r="5"/><circle cx="56" cy="56" r="5"/>
     <circle cx="24" cy="56" r="5"/><circle cx="40" cy="56" r="5"/>
   </g>
-  <rect x="17" y="17" width="30" height="30" fill="#ece4d1"/>
-  <circle cx="32" cy="32" r="9" fill="none" stroke="#b06a4d" stroke-width="2.5"/>
+  <rect x="16" y="16" width="32" height="32" fill="#ece4d1"/>
+  <!-- coffee bag line art -->
+  <g fill="none" stroke="#2b211a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- rolled top, narrower than the body -->
+    <rect x="26.5" y="19.5" width="11" height="4" rx="1.6"/>
+    <!-- body flaring out to the base -->
+    <path d="M26.5 23.5 23 40.6c-.35 1.6.75 3 2.4 3h13.2c1.65 0 2.75-1.4 2.4-3L37.5 23.5"/>
+    <!-- label -->
+    <rect x="27.5" y="29" width="9" height="8.5" rx="1.5"/>
+    <!-- beans -->
+    <ellipse cx="30" cy="33.2" rx="1.4" ry="2" transform="rotate(-20 30 33.2)"/>
+    <ellipse cx="34.2" cy="33.4" rx="1.4" ry="2" transform="rotate(-20 34.2 33.4)"/>
+  </g>
 </svg>
