@@ -1,0 +1,93 @@
+@import "tailwindcss";
+@import "@fontsource-variable/fraunces/standard-italic.css";
+@import "@fontsource-variable/fraunces/standard.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+
+/* ============================================================
+   THEME TOKENS — Chocolate Lab (Pantone 19-1214) + Cactus
+   (Pantone 19-0120) on cream paper; terracotta stays as the
+   single warm pop for the passport stamp ink.
+   ============================================================ */
+:root {
+  --paper: #f3eee4;          /* app background — cream paper */
+  --paper-deep: #ece4d1;     /* stamp interiors, wells */
+  --ink: #362a23;            /* primary text — deep chocolate */
+  --ink-soft: #857766;       /* secondary text */
+  --cactus: #5b673d;         /* Pantone Cactus — green accent, matcha leaves */
+  --cactus-deep: #454f2c;
+  --chocolate: #52403a;      /* Pantone Chocolate Lab — coffee leaves, buttons */
+  --chocolate-deep: #382b24; /* perforated stamp frame */
+  --terracotta: #b06a4d;     /* passport stamp ink */
+  --line: #d8cfba;           /* hairline borders */
+  --leaf-neutral: #a49582;   /* non-matcha/coffee drink leaves — warm taupe */
+}
+
+@theme {
+  --color-paper: var(--paper);
+  --color-paper-deep: var(--paper-deep);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-cactus: var(--cactus);
+  --color-cactus-deep: var(--cactus-deep);
+  --color-chocolate: var(--chocolate);
+  --color-chocolate-deep: var(--chocolate-deep);
+  --color-terracotta: var(--terracotta);
+  --color-line: var(--line);
+
+  --font-display: "Fraunces Variable", "Georgia", serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Paper grain — SVG noise overlay, applied via .grain */
+.grain {
+  position: relative;
+}
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.45 0 0 0 0 0.42 0 0 0 0 0.36 0 0 0 0.10 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Perforated postage-stamp frame. Set --hole per use for scale;
+   holes are punched through ::before so content stays intact. */
+.stamp-frame {
+  --hole: 8px;
+  position: relative;
+  padding: calc(var(--hole) * 2.4);
+}
+.stamp-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--chocolate-deep);
+  -webkit-mask: radial-gradient(var(--hole), #0000 98%, #000)
+    calc(var(--hole) * -1.5) calc(var(--hole) * -1.5) /
+    calc(var(--hole) * 3) calc(var(--hole) * 3) round;
+  mask: radial-gradient(var(--hole), #0000 98%, #000)
+    calc(var(--hole) * -1.5) calc(var(--hole) * -1.5) /
+    calc(var(--hole) * 3) calc(var(--hole) * 3) round;
+}
+
+/* Stamp "thunk" — scales in oversized + rotated, slams down, tiny settle */
+@keyframes stamp-thunk {
+  0%   { transform: scale(2.4) rotate(-14deg); opacity: 0; }
+  55%  { transform: scale(0.92) rotate(-7deg); opacity: 1; }
+  75%  { transform: scale(1.06) rotate(-8.5deg); }
+  100% { transform: scale(1) rotate(-8deg); opacity: 1; }
+}
+.animate-stamp {
+  animation: stamp-thunk 0.45s cubic-bezier(0.22, 1.2, 0.36, 1) both;
+}

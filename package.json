@@ -1,0 +1,31 @@
+{
+  "name": "postmark",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "deploy": "vite build --base /postmark/ && gh-pages -d dist",
+    "lint": "oxlint",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fontsource-variable/fraunces": "^5.2.9",
+    "@fontsource/inter": "^5.2.8",
+    "@tailwindcss/vite": "^4.3.2",
+    "html-to-image": "^1.11.13",
+    "idb": "^8.0.3",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "tailwindcss": "^4.3.2"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.3",
+    "gh-pages": "^6.3.0",
+    "oxlint": "^1.71.0",
+    "vite": "^8.1.1"
+  }
+}
